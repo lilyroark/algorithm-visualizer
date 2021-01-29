@@ -23,6 +23,30 @@
 		<div id="numArray">
 		
 		<script>
+			var swap = function() {
+				if (swapStack.length !== 0 && canSwap) {
+						console.log("Imma swap");
+						var swaps = swapStack.shift();
+						var i = swaps[0];
+						var j = swaps[1];
+						var tmp = nums[i].innerHTML;
+						console.log(tmp);
+						nums[i].innerHTML = nums[j].innerHTML;
+						nums[j].innerHTML = tmp;
+						for (var color in lastSwaps) {
+							nums[color].style.backgroundColor = "white";
+						}
+						lastSwaps = [i , j];
+						console.log(lastSwaps);
+						nums[i].style.backgroundColor = "blue";
+						nums[j].style.backgroundColor = "pink";
+						console.log(swapStack);
+					} else {
+						console.log("couldn't swap");
+						window.clearInterval(animate);
+					}
+				}
+			
 			var sort = function() {
 				console.log("sorting!");
 				var numString = document.getElementById("nums").value.split(",");
@@ -53,30 +77,8 @@
 					}
 					canSwap = true;
 				}
-					console.log(swapStack);
-				var swap = function() {
-					if (swapStack.length !== 0 && canSwap) {
-					console.log("Imma swap");
-						var swaps = swapStack.shift();
-						var i = swaps[0];
-						var j = swaps[1];
-						var tmp = nums[i].innerHTML;
-						console.log(tmp);
-						nums[i].innerHTML = nums[j].innerHTML;
-						nums[j].innerHTML = tmp;
-						for (var color in lastSwaps) {
-							nums[color].style.backgroundColor = "white";
-						}
-						lastSwaps = [i , j];
-						console.log(lastSwaps);
-						nums[i].style.backgroundColor = "blue";
-						nums[j].style.backgroundColor = "pink";
-						console.log(swapStack);
-					} else {
-						console.log("couldn't swap");
-						window.clearInterval(animate);
-					}
-				}
+				console.log(swapStack);
+				
 				var animate = window.setInterval(swap, 5000);
 			}
 				
