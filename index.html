@@ -23,7 +23,39 @@
 		<div id="numArray">
 		
 		<script>
-			var swap = function() {
+			var sort = function() {
+				console.log("sorting!");
+				var numString = document.getElementById("nums").value.split(",");
+				var nums = [];
+				var realNums = [];
+				for (var i = 0; i < numString.length; i++) {
+					var num = parseFloat(numString[i].trim());
+					var spanNum = document.createElement("span");
+					spanNum.setAttribute("id", "index" + i);
+					spanNum.textContent = num;
+					spanNum.className = "num";
+					document.getElementById("numArray").appendChild(spanNum);
+					nums.push(spanNum);
+					realNums.push(num);
+				}
+				
+				var swapStack = [];	
+				var canSwap = false;
+				var lastSwaps = [];
+				
+				for (var i = 0; i < realNums.length; i++) {
+					for (var j = i; j < realNums.length; j++) {
+						if (realNums[i] > realNums[j]) {
+							var tmp = realNums[i];
+							realNums[i] = realNums[j];
+							realNums[j] = tmp;
+							swapStack.push([i, j]);							
+						}
+					}
+					canSwap = true;
+				}
+				
+				var swap = function() {
 				if (swapStack.length !== 0 && canSwap) {
 						console.log("Imma swap");
 						var swaps = swapStack.shift();
@@ -47,36 +79,6 @@
 					}
 				}
 			
-			var sort = function() {
-				console.log("sorting!");
-				var numString = document.getElementById("nums").value.split(",");
-				var nums = [];
-				var realNums = [];
-				for (var i = 0; i < numString.length; i++) {
-					var num = parseFloat(numString[i].trim());
-					var spanNum = document.createElement("span");
-					spanNum.setAttribute("id", "index" + i);
-					spanNum.textContent = num;
-					spanNum.className = "num";
-					document.getElementById("numArray").appendChild(spanNum);
-					nums.push(spanNum);
-					realNums.push(num);
-				}
-				
-				var swapStack = [];	
-				var canSwap = false;
-				var lastSwaps = [];
-				for (var i = 0; i < realNums.length; i++) {
-					for (var j = i; j < realNums.length; j++) {
-						if (realNums[i] > realNums[j]) {
-							var tmp = realNums[i];
-							realNums[i] = realNums[j];
-							realNums[j] = tmp;
-							swapStack.push([i, j]);							
-						}
-					}
-					canSwap = true;
-				}
 				console.log(swapStack);
 				
 				var animate = window.setInterval(swap, 2000);
