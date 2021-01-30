@@ -65,9 +65,6 @@
 						console.log(tmp);
 						nums[i].innerHTML = nums[j].innerHTML;
 						nums[j].innerHTML = tmp;
-						for (var color in lastSwaps) {
-							nums[color].style.backgroundColor = "white";
-						}
 						lastSwaps = [i , j];
 						console.log(lastSwaps);
 						nums[i].style.backgroundColor = "blue";
@@ -77,6 +74,9 @@
 						console.log("couldn't swap");
 						window.clearInterval(animate);
 					}
+						for (var color in lastSwaps) {
+							nums[color].style.backgroundColor = "white";
+						}
 				}
 			
 				console.log(swapStack);
