@@ -24,7 +24,7 @@ var sort = function() {
 	var inspect = function() {
 		
 		for (var item in clear) {
-			item.style.color = "white";
+			item.style.backgroundColor = "white";
 		}
 		clear = [];
 		
@@ -32,14 +32,14 @@ var sort = function() {
 			var tmp = nums[i].innerHTML;
 			nums[i].innerHTML = nums[j].innerHTML;
 			nums[j].innerHTML = tmp;
-			nums[i].style.color = "lightCyan";
-			nums[j].style.color = "pink";
+			nums[i].style.backgroundColor = "lightCyan";
+			nums[j].style.backgroundColor = "pink";
 			swap = false;
 			clear.push(i);
 			clear.push(j);
 		} else {	
-			nums[i].style.color = "pink";
-			nums[j].style.color = "lightCyan";
+			nums[i].style.backgroundColor = "pink";
+			nums[j].style.backgroundColor = "lightCyan";
 			if (nums[i].innerHTML > nums[j].innerHTML) {
 				swap = true;
 			} else {
@@ -47,6 +47,7 @@ var sort = function() {
 				clear.push(j);
 			}
 			
+			j++;
 			if (j >= nums.length) {
 				i++;
 				j = i + 1;
