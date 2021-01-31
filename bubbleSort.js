@@ -52,7 +52,6 @@ var sort = function() {
 				i++;
 				j = i + 1;
 				if (i >= nums.length) {
-					break;
 					window.clearInterval(animate);
 				}
 			} 
