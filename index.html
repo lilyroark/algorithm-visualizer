@@ -22,71 +22,7 @@
 		<button id="submit"> Sort! </button>
 		<div id="numArray">
 		
-		<script>
-			var sort = function() {
-				console.log("sorting!");
-				var numString = document.getElementById("nums").value.split(",");
-				var nums = [];
-				var realNums = [];
-				for (var i = 0; i < numString.length; i++) {
-					var num = parseFloat(numString[i].trim());
-					var spanNum = document.createElement("span");
-					spanNum.setAttribute("id", "index" + i);
-					spanNum.textContent = num;
-					spanNum.className = "num";
-					document.getElementById("numArray").appendChild(spanNum);
-					nums.push(spanNum);
-					realNums.push(num);
-				}
-				
-				var swapStack = [];	
-				var canSwap = false;
-				var lastSwaps = [];
-				
-				for (var i = 0; i < realNums.length; i++) {
-					for (var j = i; j < realNums.length; j++) {
-						if (realNums[i] > realNums[j]) {
-							var tmp = realNums[i];
-							realNums[i] = realNums[j];
-							realNums[j] = tmp;
-							swapStack.push([i, j]);							
-						}
-					}
-					canSwap = true;
-				}
-				
-				var swap = function() {
-				if (swapStack.length !== 0 && canSwap) {
-						console.log("Imma swap");
-						var swaps = swapStack.shift();
-						var i = swaps[0];
-						var j = swaps[1];
-						var tmp = nums[i].innerHTML;
-						console.log(tmp);
-						nums[i].innerHTML = nums[j].innerHTML;
-						nums[j].innerHTML = tmp;
-						lastSwaps = [i , j];
-						console.log(lastSwaps);
-						nums[i].style.backgroundColor = "blue";
-						nums[j].style.backgroundColor = "pink";
-						console.log(swapStack);
-					} else {
-						console.log("couldn't swap");
-						window.clearInterval(animate);
-					}
-						for (var color in lastSwaps) {
-							nums[color].style.backgroundColor = "white";
-						}
-				}
-			
-				console.log(swapStack);
-				
-				var animate = window.setInterval(swap, 2000);
-			}
-				
-			var sortButton = document.getElementById("submit");
-			sortButton.addEventListener("click", sort);
-		</script>
+		<script src="bubbleSort.js"></script>
 	</body>
 	
 </html>
