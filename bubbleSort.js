@@ -24,7 +24,7 @@ var sort = function() {
 	var inspect = function() {
 		
 		for (var item in clear) {
-			item.style.backgroundColor = "white";
+			nums[item].style.backgroundColor = "white";
 		}
 		clear = [];
 		
