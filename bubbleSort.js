@@ -14,7 +14,6 @@ var sort = function() {
 		spanNum.className = "num";
 		document.getElementById("numArray").appendChild(spanNum);
 		nums.push(spanNum);
-		realNums.push(num);
 	}
 	
 	
