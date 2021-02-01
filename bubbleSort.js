@@ -18,15 +18,15 @@ var sort = function() {
 	
 	
 	var i = 0;
-	var j = 1;
+	var j = 0;
 	var swap = false;
 	var clear = [];
 	var inspect = function() {
 		
-		for (var item in clear) {
-			nums[item].style.backgroundColor = "white";
+		for (var k = 0; k < clear.length; k++) {
+			nums[clear[k]].style.backgroundColor = "white";
 		}
-		clear = [];
+		clear = [i, j];
 		
 		if (swap === true) {
 			var tmp = nums[i].innerHTML;
@@ -35,26 +35,23 @@ var sort = function() {
 			nums[i].style.backgroundColor = "lightCyan";
 			nums[j].style.backgroundColor = "pink";
 			swap = false;
-			clear.push(i);
-			clear.push(j);
 		} else {	
-			nums[i].style.backgroundColor = "pink";
 			nums[j].style.backgroundColor = "lightCyan";
+			nums[i].style.backgroundColor = "pink";
 			if (nums[i].innerHTML > nums[j].innerHTML) {
 				swap = true;
 			} else {
-				clear.push(i);
-				clear.push(j);
+				j++;
+				if (j >= nums.length) {
+					i++;
+					j = i;
+					if (i >= nums.length) {
+						nums[nums.length - 1].style.backgroundColor = "white";
+						window.clearInterval(animate);
+						console.log("Done!");
+					}
+				} 
 			}
-			
-			j++;
-			if (j >= nums.length) {
-				i++;
-				j = i + 1;
-				if (i >= nums.length) {
-					window.clearInterval(animate);
-				}
-			} 
 		}
 	}
 	
